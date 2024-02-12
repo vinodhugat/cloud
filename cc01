@@ -1,0 +1,35 @@
+# demonstate Using filezila to trnsfer contents from EC2 server
+To demonstrate using FileZilla to transfer contents from an EC2 server, follow these steps:
+
+1. **Install FileZilla**: If you haven't already, download and install FileZilla from their official website (https://filezilla-project.org/).
+
+2. **Get EC2 Server Details**: You'll need the following details from your EC2 instance:
+   - Public DNS (or IP address)
+   - Username (usually "ec2-user" for Amazon Linux, "ubuntu" for Ubuntu, or "root" for some other distributions)
+   - Private key (usually a .pem file) to connect via SFTP (SSH File Transfer Protocol)
+
+3. **Launch FileZilla**:
+   - Open FileZilla from your computer.
+
+4. **Configure FileZilla**:
+   - Go to File > Site Manager.
+   - Click on "New Site" and give it a name.
+   - In the "Host" field, enter the Public DNS (or IP address) of your EC2 instance.
+   - Set the "Protocol" to "SFTP - SSH File Transfer Protocol".
+   - In the "Logon Type" field, select "Key file" and browse to the location of your private key (.pem file).
+   - Leave the "User" field blank or enter the appropriate username (e.g., "ec2-user" or "ubuntu").
+   - Click "Connect".
+
+5. **Transfer Files**:
+   - Once connected, you'll see the local files on the left side of FileZilla and the remote files on the right side.
+   - Navigate to the directory where your files are located on both the local and remote sides.
+   - To transfer files from your EC2 instance to your local machine, simply drag and drop them from the remote pane to the local pane.
+   - To transfer files from your local machine to your EC2 instance, drag and drop them from the local pane to the remote pane.
+
+6. **Monitor Transfer Progress**:
+   - You'll see the progress of your file transfer at the bottom of the FileZilla window.
+
+7. **Disconnect**:
+   - Once you've finished transferring files, close the connection by clicking on "Server" > "Disconnect".
+
+That's it! You've successfully transferred contents from your EC2 server using FileZilla.
