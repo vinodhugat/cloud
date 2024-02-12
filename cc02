@@ -1,0 +1,31 @@
+# Demonstate elastic ip concepts in AWS
+Elastic IP (EIP) is a feature provided by Amazon Web Services (AWS) that allows you to allocate a static IPv4 address to your AWS account. Here's how you can demonstrate the concept of Elastic IP in AWS:
+
+1. **Sign in to the AWS Management Console**: Go to the AWS Management Console (https://aws.amazon.com/console/) and sign in to your account.
+
+2. **Navigate to the EC2 Dashboard**: Click on the "Services" menu at the top left corner of the console, then select "EC2" under the Compute section.
+
+3. **Allocate an Elastic IP Address**:
+   - In the EC2 dashboard, locate the "Elastic IPs" option in the left-hand sidebar and click on it.
+   - Click on the "Allocate new address" button.
+   - Choose "Amazon's pool of IPv4 addresses" and click "Allocate".
+
+4. **Associate the Elastic IP Address with an EC2 Instance**:
+   - Select the newly allocated Elastic IP address from the list.
+   - Click on "Actions" and then select "Associate address".
+   - Choose the EC2 instance you want to associate the Elastic IP with from the drop-down menu.
+   - Click "Associate".
+
+5. **Verify the Association**:
+   - Once the association is complete, you'll see the Elastic IP address associated with your chosen EC2 instance in the Elastic IP dashboard.
+   - You can also verify the association by checking the EC2 instance details. The Elastic IP will be listed under the "Description" tab of the instance.
+
+6. **Test Connectivity**:
+   - Use the Elastic IP address to connect to your EC2 instance instead of the instance's public DNS name.
+   - You can SSH into a Linux instance or RDP into a Windows instance using the Elastic IP address.
+
+7. **Release the Elastic IP Address (Optional)**:
+   - If you no longer need the Elastic IP address, you can release it to avoid incurring additional charges.
+   - In the Elastic IP dashboard, select the Elastic IP address you want to release and click "Actions" > "Release addresses".
+
+That's it! You've now demonstrated the concept of Elastic IP in AWS by allocating, associating, and testing connectivity with an Elastic IP address. Remember that Elastic IPs are free as long as they are associated with an EC2 instance; however, charges may apply if the Elastic IP is not associated with a running instance.
