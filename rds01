@@ -1,0 +1,80 @@
+To create an Amazon RDS (Relational Database Service) instance and connect it with MySQL Workbench, follow these steps:
+
+1. **Sign in to the AWS Management Console**: Go to the AWS Management Console (https://aws.amazon.com/console/) and sign in to your AWS account.
+
+2. **Navigate to RDS**: Click on the "Services" menu at the top left corner of the console, then select "RDS" under the Database section.
+
+3. **Launch RDS Instance**:
+   - Click on the "Create database" button.
+   - Choose the engine type as "MySQL".
+   - Select the appropriate version of MySQL.
+   - Choose the DB instance class based on your requirements (e.g., db.t2.micro for testing purposes).
+   - Configure other settings such as storage, DB instance identifier, username, and password.
+
+4. **Configure Advanced Settings**:
+   - Expand the "Additional configuration" section.
+   - Configure options such as VPC, subnet group, security group, database name, port, etc.
+   - Optionally, enable automated backups, monitoring, and maintenance settings.
+
+5. **Create the RDS Instance**:
+   - Review the configuration to ensure everything is correct.
+   - Click on the "Create database" button to launch the RDS instance.
+
+6. **Wait for the Instance to be Available**: It may take a few minutes for the RDS instance to be provisioned and become available.
+
+7. **Allow Access from Your IP Address**:
+   - In the RDS dashboard, select the security group associated with your RDS instance.
+   - Edit the inbound rules to allow access to the MySQL port (default is 3306) from your IP address or from a specific IP range.
+
+8. **Connect with MySQL Workbench**:
+   - Open MySQL Workbench on your local machine.
+   - Click on the "+" icon next to "MySQL Connections" to add a new connection.
+   - Enter a connection name.
+   - Set the connection method to "Standard (TCP/IP)".
+   - Enter the endpoint of your RDS instance in the "Hostname" field. You can find the endpoint in the RDS dashboard.
+   - Enter the port number (default is 3306).
+   - Enter the username and password you set during the RDS instance creation.
+   - Click on "Test Connection" to verify the connection.
+   - If the connection test is successful, click on "OK" to save the connection.
+
+9. **Connect to the RDS Instance**:
+   - Double-click on the connection name you just created in MySQL Workbench.
+   - You should now be connected to your RDS MySQL database, and you can start managing it using MySQL Workbench.
+
+By following these steps, you've created an RDS MySQL instance and connected it with MySQL Workbench, allowing you to manage your database easily from your local machine.
+
+<?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$servername = "http://database-1.cd6y06yio5v5.ap-south-1.rds.amazonaws.com";
+$username = "Thushar"; // MySQL username
+$password = "Thushar123"; // MySQL password
+$dbname = "manish"; // Database name
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+// SQL query to retrieve data from the "Aircraft" table
+$sql = "SELECT * FROM student";
+$result = $conn->query($sql);
+
+// Check if any rows were returned
+if ($result->num_rows > 0) {
+    // Output data of each row
+    while ($row = $result->fetch_assoc()) {
+        echo "ID: " . $row["id"] . " - name: " . $row["name"] . "<br>";
+    }
+} else {
+    echo "0 rows";
+}
+
+// Close connection
+$conn->close();
+?>
